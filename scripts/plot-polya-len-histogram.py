@@ -43,7 +43,7 @@ polyadist = polyadist[[c for c in polyadist.columns if c not in EXCLUDE_SAMPLES]
 
 polyacounts = polyadist[polyadist.index >= MINIMUM_POLYA_LEN]
 
-fig, ax = plt.subplots(1, 1, figsize=(7, 3.5))
+fig, ax = plt.subplots(1, 1, figsize=(20, 10))
 
 xpositions = np.linspace(polyacounts.index[0],
                          polyacounts.index[-1], 100) ** XSCALE_TRANSFORM_FACTOR
@@ -61,8 +61,9 @@ ax.set_xlabel('Poly(A) length (nt)')
 ax.set_ylabel('Density (a.u.)')
 ax.set_xticks(xticks ** XSCALE_TRANSFORM_FACTOR)
 ax.set_xticklabels(xticks)
-ax.legend(fontsize=10, loc='best')
+ax.legend(fontsize=10, bbox_to_anchor = (1, 0.8))
 
 plt.subplots_adjust(bottom=.22, right=.95)
+plt.tight_layout()
 
 plt.savefig(snakemake.output[0])

@@ -78,14 +78,14 @@ def plot_dists(outpath, dists, controlsamples):
     xticks = np.arange(0, dists.index[-1] + 0.1)
     xticks_disp = [format(v, 'g') for v in xtransform_rev(xticks)]
 
-    fig, ax = plt.subplots(1, 1, figsize=(4, 3.2))
+    fig, ax = plt.subplots(1, 1, figsize=(8, 6))
     ax.patch.set_facecolor('#f7f7f7')
 
     for (samplename, explength), color in zip(samplessorted, samplecolors):
         ax.plot(dists[samplename], color=color, label=samplename, zorder=3)
         ax.axvline(xtransform(explength), color=color, linewidth=2, alpha=0.3)
 
-    leg = ax.legend(loc='center left', fontsize=10)
+    leg = ax.legend(fontsize=10, bbox_to_anchor = (1, 0.8))
     plt.setp([leg.get_frame()], facecolor='white', edgecolor='#e8e8e8')
 
     ax.set_xlabel('Poly(A) length (nt)')
